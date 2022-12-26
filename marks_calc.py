@@ -22,11 +22,12 @@ while append_or_not.lower() in "yes":
                              inp_weight, inp_mark])
             file.close()
             
+        append_or_not = input("\nAdd more?: ")
+    
     else:
         
-        print("Invalid input")
-        
-    append_or_not = input("\nAdd more?: ")
+        print("\nInvalid input.")
+        quit()
     
 #opening csv file
 f = open("marksheet.csv", "r")
@@ -89,6 +90,12 @@ view_or_not = input("\nWould you like to view marks?: ")
 if view_or_not.lower() in "yes":
 
     desired = input("\nEnter course: ")
+    
+    if not desired in courses_dict:
+        
+        print("\nCourse does not exist on file.")
+        quit()    
+    
     desired_dict = courses_dict[desired.lower()]
     
     #creating dictionary for weights
